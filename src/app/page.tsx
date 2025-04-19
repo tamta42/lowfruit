@@ -1,8 +1,8 @@
-"use client";
+'use client';
 
-import QuadrantVisualization from "@/components/QuadrantVisualization";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { useState } from "react";
+import QuadrantVisualization from '@/components/QuadrantVisualization';
+import {Card, CardContent, CardHeader, CardTitle} from '@/components/ui/card';
+import {useState} from 'react';
 import {
   Table,
   TableBody,
@@ -11,11 +11,11 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from "@/components/ui/table";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Trash } from "lucide-react";
-import { Separator } from "@/components/ui/separator";
+} from '@/components/ui/table';
+import {Button} from '@/components/ui/button';
+import {Input} from '@/components/ui/input';
+import {Trash} from 'lucide-react';
+import {Separator} from '@/components/ui/separator';
 
 interface Initiative {
   id: string;
@@ -25,24 +25,37 @@ interface Initiative {
 }
 
 const initialInitiatives: Initiative[] = [
-  { id: "1", name: "Example 1", value: 7, complexity: 3 },
-  { id: "2", name: "Example 2", value: 5, complexity: 5 },
-  { id: "3", name: "Example 3", value: 3, complexity: 7 },
+  {id: '1', name: 'Example 1', value: 7, complexity: 3},
+  {id: '2', name: 'Example 2', value: 5, complexity: 5},
+  {id: '3', name: 'Example 3', value: 3, complexity: 7},
 ];
 
 const onlineRetailSample: Omit<Initiative, 'id'>[] = [
-  { name: "Improve Product Search", value: 8, complexity: 4 },
-  { name: "Implement Customer Reviews", value: 7, complexity: 3 },
-  { name: "Optimize Checkout Process", value: 9, complexity: 5 },
-  { name: "Personalized Recommendations", value: 6, complexity: 6 },
-  { name: "Mobile App Development", value: 5, complexity: 7 },
+  {name: 'Improve Product Search', value: 8, complexity: 4},
+  {name: 'Implement Customer Reviews', value: 7, complexity: 3},
+  {name: 'Optimize Checkout Process', value: 9, complexity: 5},
+  {name: 'Personalized Recommendations', value: 6, complexity: 6},
+  {name: 'Mobile App Development', value: 5, complexity: 7},
+];
+
+const languageSchoolSample: Omit<Initiative, 'id'>[] = [
+  {name: 'Develop Online Course', value: 7, complexity: 5},
+  {name: 'Offer Free Trial Classes', value: 9, complexity: 3},
+  {name: 'Run Social Media Ads', value: 6, complexity: 4},
+  {name: 'Partner with Local Schools', value: 8, complexity: 6},
+  {name: 'Create a Referral Program', value: 5, complexity: 2},
 ];
 
 export default function Home() {
-  const [initiatives, setInitiatives] = useState<Initiative[]>(initialInitiatives);
+  const [initiatives, setInitiatives] = useState<Initiative[]>(
+    initialInitiatives
+  );
 
   const addInitiative = (newInitiative: Omit<Initiative, 'id'>) => {
-    setInitiatives([...initiatives, { ...newInitiative, id: crypto.randomUUID() }]);
+    setInitiatives([
+      ...initiatives,
+      {...newInitiative, id: crypto.randomUUID()},
+    ]);
   };
 
   const clearInitiatives = () => {
@@ -50,19 +63,30 @@ export default function Home() {
   };
 
   const deleteInitiative = (id: string) => {
-    setInitiatives(initiatives.filter((initiative) => initiative.id !== id));
+    setInitiatives(initiatives.filter(initiative => initiative.id !== id));
   };
 
-  const updateInitiative = (id: string, updatedInitiative: Partial<Initiative>) => {
+  const updateInitiative = (
+    id: string,
+    updatedInitiative: Partial<Initiative>
+  ) => {
     setInitiatives(
-      initiatives.map((initiative) =>
-        initiative.id === id ? { ...initiative, ...updatedInitiative } : initiative
+      initiatives.map(initiative =>
+        initiative.id === id ? {...initiative, ...updatedInitiative} : initiative
       )
     );
   };
 
   const loadOnlineRetailSample = () => {
-    setInitiatives(onlineRetailSample.map(item => ({...item, id: crypto.randomUUID()})));
+    setInitiatives(
+      onlineRetailSample.map(item => ({...item, id: crypto.randomUUID()}))
+    );
+  };
+
+  const loadLanguageSchoolSample = () => {
+    setInitiatives(
+      languageSchoolSample.map(item => ({...item, id: crypto.randomUUID()}))
+    );
   };
 
   return (
@@ -81,10 +105,16 @@ export default function Home() {
               deleteInitiative={deleteInitiative}
               updateInitiative={updateInitiative}
             />
-             <Separator className="my-4" />
-              <div className="flex justify-around">
-                <Button onClick={loadOnlineRetailSample}>Online Retail Sample</Button>
-              </div>
+            <Separator className="my-4" />
+            <div className="flex justify-center items-center py-2">
+              <p className="text-sm mr-2">Samples:</p>
+              <Button onClick={loadOnlineRetailSample} className="mr-2">
+                Online Retail
+              </Button>
+              <Button onClick={loadLanguageSchoolSample}>
+                Language School
+              </Button>
+            </div>
           </CardContent>
         </Card>
         <Card className="col-span-1">
@@ -116,7 +146,7 @@ const InitiativeTable: React.FC<InitiativeTableProps> = ({
   updateInitiative,
 }) => {
   const handleAddRow = () => {
-    addInitiative({ name: "", value: 1, complexity: 1 });
+    addInitiative({name: '', value: 1, complexity: 1});
   };
 
   return (
@@ -179,14 +209,14 @@ const InitiativeTableRow: React.FC<InitiativeTableRowProps> = ({
 
   const handleNameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setName(e.target.value);
-    updateInitiative(initiative.id, { name: e.target.value });
+    updateInitiative(initiative.id, {name: e.target.value});
   };
 
   const handleValueChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const newValue = parseInt(e.target.value);
     if (!isNaN(newValue) && newValue >= 1 && newValue <= 9) {
       setValue(e.target.value);
-      updateInitiative(initiative.id, { value: newValue });
+      updateInitiative(initiative.id, {value: newValue});
     }
   };
 
@@ -194,7 +224,7 @@ const InitiativeTableRow: React.FC<InitiativeTableRowProps> = ({
     const newComplexity = parseInt(e.target.value);
     if (!isNaN(newComplexity) && newComplexity >= 1 && newComplexity <= 9) {
       setComplexity(e.target.value);
-      updateInitiative(initiative.id, { complexity: newComplexity });
+      updateInitiative(initiative.id, {complexity: newComplexity});
     }
   };
 
@@ -211,7 +241,11 @@ const InitiativeTableRow: React.FC<InitiativeTableRowProps> = ({
         <Input type="number" value={complexity} onChange={handleComplexityChange} />
       </TableCell>
       <TableCell>
-        <Button variant="ghost" size="icon" onClick={() => deleteInitiative(initiative.id)}>
+        <Button
+          variant="ghost"
+          size="icon"
+          onClick={() => deleteInitiative(initiative.id)}
+        >
           <Trash className="h-4 w-4" />
           <span className="sr-only">Delete Initiative</span>
         </Button>
