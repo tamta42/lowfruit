@@ -6,7 +6,6 @@ import {useState} from 'react';
 import {
   Table,
   TableBody,
-  TableCaption,
   TableCell,
   TableHead,
   TableHeader,
@@ -178,13 +177,12 @@ const InitiativeTable: React.FC<InitiativeTableProps> = ({
           ))}
           <TableRow>
             <TableCell colSpan={5} className="p-0">
-              <Button variant="ghost" className="w-full" onClick={handleAddRow}>
+              <Button variant="default" className="w-full" onClick={handleAddRow}>
                 Add Initiative
               </Button>
             </TableCell>
           </TableRow>
         </TableBody>
-        <TableCaption>A list of all initiatives.</TableCaption>
       </Table>
     </div>
   );
