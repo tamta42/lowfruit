@@ -39,11 +39,11 @@ const onlineRetailSample: Omit<Initiative, 'id'>[] = [
 ];
 
 const languageSchoolSample: Omit<Initiative, 'id'>[] = [
-  {name: 'Develop Online Course', value: 7, complexity: 5},
-  {name: 'Offer Free Trial Classes', value: 9, complexity: 3},
-  {name: 'Run Social Media Ads', value: 6, complexity: 4},
-  {name: 'Partner with Local Schools', value: 8, complexity: 6},
-  {name: 'Create a Referral Program', value: 5, complexity: 2},
+  {name: 'Offer English Tutoring for Professionals', value: 8, complexity: 5},
+  {name: 'Organize Cultural Exchange Events', value: 7, complexity: 4},
+  {name: 'Launch Online English Pronunciation Course', value: 9, complexity: 6},
+  {name: 'Create Vietnamese-English Translation Guides', value: 6, complexity: 3},
+  {name: 'Host Free English Conversation Clubs', value: 5, complexity: 2},
 ];
 
 export default function Home() {
@@ -154,10 +154,10 @@ const InitiativeTable: React.FC<InitiativeTableProps> = ({
       <Table>
         <TableHeader>
           <TableRow>
-            <TableHead className="w-[50px]">#</TableHead>
+            <TableHead className="w-[30px]">#</TableHead>
             <TableHead>Name</TableHead>
-            <TableHead>Value</TableHead>
-            <TableHead>Complexity</TableHead>
+            <TableHead className="w-[50px]">Value</TableHead>
+            <TableHead className="w-[50px]">Complexity</TableHead>
             <TableHead className="w-[50px]">
               <Button variant="ghost" size="icon" onClick={clearInitiatives}>
                 <Trash className="h-4 w-4" />
