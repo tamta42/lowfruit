@@ -15,6 +15,7 @@ import {
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Trash } from "lucide-react";
+import { Separator } from "@/components/ui/separator";
 
 interface Initiative {
   id: string;
@@ -68,6 +69,8 @@ export default function Home() {
               deleteInitiative={deleteInitiative}
               updateInitiative={updateInitiative}
             />
+             <Separator className="my-4" />
+            <div className="text-center">Samples</div>
           </CardContent>
         </Card>
         <Card className="col-span-1">
