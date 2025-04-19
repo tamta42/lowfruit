@@ -30,6 +30,14 @@ const initialInitiatives: Initiative[] = [
   { id: "3", name: "Example 3", value: 3, complexity: 7 },
 ];
 
+const onlineRetailSample: Omit<Initiative, 'id'>[] = [
+  { name: "Improve Product Search", value: 8, complexity: 4 },
+  { name: "Implement Customer Reviews", value: 7, complexity: 3 },
+  { name: "Optimize Checkout Process", value: 9, complexity: 5 },
+  { name: "Personalized Recommendations", value: 6, complexity: 6 },
+  { name: "Mobile App Development", value: 5, complexity: 7 },
+];
+
 export default function Home() {
   const [initiatives, setInitiatives] = useState<Initiative[]>(initialInitiatives);
 
@@ -53,6 +61,10 @@ export default function Home() {
     );
   };
 
+  const loadOnlineRetailSample = () => {
+    setInitiatives(onlineRetailSample.map(item => ({...item, id: crypto.randomUUID()})));
+  };
+
   return (
     <div className="flex flex-col items-center justify-center min-h-screen py-2">
       <h1 className="text-2xl font-bold mb-4">Value/Complexity Visualizer</h1>
@@ -70,7 +82,9 @@ export default function Home() {
               updateInitiative={updateInitiative}
             />
              <Separator className="my-4" />
-            <div className="text-center">Samples</div>
+              <div className="flex justify-around">
+                <Button onClick={loadOnlineRetailSample}>Online Retail Sample</Button>
+              </div>
           </CardContent>
         </Card>
         <Card className="col-span-1">
