@@ -153,11 +153,11 @@ const InitiativeTable: React.FC<InitiativeTableProps> = ({
       <Table>
         <TableHeader>
           <TableRow>
-            <TableHead className="w-[30px]">#</TableHead>
-            <TableHead>Name</TableHead>
-            <TableHead className="w-[50px]">Value</TableHead>
-            <TableHead className="w-[50px]">Complexity</TableHead>
-            <TableHead className="w-[50px]">
+            <TableHead className="w-[30px] p-1 text-xs">#</TableHead>
+            <TableHead className="p-1 text-xs">Name</TableHead>
+            <TableHead className="w-[50px] p-1 text-xs">Value</TableHead>
+            <TableHead className="w-[50px] p-1 text-xs">Complexity</TableHead>
+            <TableHead className="w-[50px] p-1 text-xs">
               <Button variant="ghost" size="icon" onClick={clearInitiatives}>
                 <Trash className="h-4 w-4" />
                 <span className="sr-only">Clear Initiatives</span>
@@ -228,17 +228,17 @@ const InitiativeTableRow: React.FC<InitiativeTableRowProps> = ({
 
   return (
     <TableRow>
-      <TableCell className="font-medium">{index + 1}</TableCell>
-      <TableCell>
-        <Input type="text" value={name} onChange={handleNameChange} />
+      <TableCell className="font-medium p-1 text-xs">{index + 1}</TableCell>
+      <TableCell className="p-1">
+        <Input className="text-xs" type="text" value={name} onChange={handleNameChange} />
       </TableCell>
-      <TableCell>
-        <Input type="number" value={value} onChange={handleValueChange} />
+      <TableCell className="p-1">
+        <Input className="text-xs" type="number" value={value} onChange={handleValueChange} />
       </TableCell>
-      <TableCell>
-        <Input type="number" value={complexity} onChange={handleComplexityChange} />
+      <TableCell className="p-1">
+        <Input className="text-xs" type="number" value={complexity} onChange={handleComplexityChange} />
       </TableCell>
-      <TableCell>
+      <TableCell className="p-1">
         <Button
           variant="ghost"
           size="icon"
