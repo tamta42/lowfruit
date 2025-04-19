@@ -4,6 +4,15 @@ import InitiativeForm from "@/components/InitiativeForm";
 import QuadrantVisualization from "@/components/QuadrantVisualization";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { useState } from "react";
+import {
+  Table,
+  TableBody,
+  TableCaption,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@/components/ui/table"
 
 interface Initiative {
   name: string;
@@ -49,6 +58,33 @@ export default function Home() {
           </CardContent>
         </Card>
       </div>
+      <Card className="w-full max-w-4xl mt-4">
+        <CardHeader>
+          <CardTitle>Initiative List</CardTitle>
+        </CardHeader>
+        <CardContent className="p-0">
+          <Table>
+            <TableHeader>
+              <TableRow>
+                <TableHead className="w-[50px]">#</TableHead>
+                <TableHead>Name</TableHead>
+                <TableHead>Value</TableHead>
+                <TableHead>Complexity</TableHead>
+              </TableRow>
+            </TableHeader>
+            <TableBody>
+              {initiatives.map((initiative, index) => (
+                <TableRow key={index}>
+                  <TableCell className="font-medium">{index + 1}</TableCell>
+                  <TableCell>{initiative.name}</TableCell>
+                  <TableCell>{initiative.value}</TableCell>
+                  <TableCell>{initiative.complexity}</TableCell>
+                </TableRow>
+              ))}
+            </TableBody>
+          </Table>
+        </CardContent>
+      </Card>
     </div>
   );
 }
