@@ -56,7 +56,7 @@ export default function Home() {
     <div className="flex flex-col items-center justify-center min-h-screen py-2">
       <h1 className="text-2xl font-bold mb-4">Value/Complexity Visualizer</h1>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4 w-full max-w-4xl">
-        <Card className="col-span-1 md:col-span-2">
+        <Card className="col-span-1">
           <CardHeader>
             <CardTitle>Initiative Input</CardTitle>
           </CardHeader>
@@ -70,7 +70,7 @@ export default function Home() {
             />
           </CardContent>
         </Card>
-        <Card>
+        <Card className="col-span-1">
           <CardHeader>
             <CardTitle>Priority Quadrant</CardTitle>
           </CardHeader>
@@ -202,5 +202,3 @@ const InitiativeTableRow: React.FC<InitiativeTableRowProps> = ({
     </TableRow>
   );
 };
-
-    
