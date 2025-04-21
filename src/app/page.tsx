@@ -24,8 +24,8 @@ interface Initiative {
 }
 
 const initialInitiatives: Initiative[] = [
-  {id: '1', name: 'Example 1', value: 7, complexity: 3},
-  {id: '2', name: 'Example 2', value: 5, complexity: 5},
+  {id: '1', name: 'Enter name of initiative #1', value: 7, complexity: 3},
+  {id: '2', name: 'Enter name of initiative #2', value: 5, complexity: 5},
 ];
 
 const onlineRetailSample: Omit<Initiative, 'id'>[] = [
@@ -93,6 +93,7 @@ export default function Home() {
       <section className="w-full">
         <h1 className="text-2xl font-bold mb-4">Initiative Prioritization Tool</h1>
       </section>
+
       <QuadrantVisualization initiatives={initiatives} />
 
       <div className="flex flex-col w-full mt-4">
@@ -248,4 +249,5 @@ const InitiativeTableRow: React.FC<InitiativeTableRowProps> = ({
     </TableRow>
   );
 };
+
 
