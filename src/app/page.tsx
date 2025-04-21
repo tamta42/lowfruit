@@ -113,12 +113,12 @@ export default function Home() {
               updateInitiative={updateInitiative}
             />
             <Separator className="my-4" />
-            <div className="flex flex-col justify-center items-center py-2">
-              <p className="text-sm mr-2">Samples:</p>
-              <Button variant="link" onClick={loadOnlineRetailSample} className="mr-2">
+            <div className="flex flex-col items-start py-2">
+              <p className="text-sm">Samples:</p>
+              <Button variant="link" className="mr-2">
                 Online Retail
               </Button>
-              <Button variant="link" onClick={loadLanguageSchoolSample} className="cursor-pointer">
+              <Button variant="link">
                 Language School
               </Button>
             </div>
