@@ -13,7 +13,7 @@ import {
 } from '@/components/ui/table';
 import {Button} from '@/components/ui/button';
 import {Input} from '@/components/ui/input';
-import {Plus, Trash} from 'lucide-react';
+import {Trash} from 'lucide-react';
 import {Separator} from '@/components/ui/separator';
 
 interface Initiative {
@@ -113,14 +113,14 @@ export default function Home() {
               updateInitiative={updateInitiative}
             />
             <Separator className="my-4" />
-            <div className="flex justify-center items-center py-2">
+            <div className="flex flex-col justify-center items-center py-2">
               <p className="text-sm mr-2">Samples:</p>
-              <Button onClick={loadOnlineRetailSample} className="mr-2">
+              <a onClick={loadOnlineRetailSample} className="mr-2 cursor-pointer">
                 Online Retail
-              </Button>
-              <Button onClick={loadLanguageSchoolSample}>
+              </a>
+              <a onClick={loadLanguageSchoolSample} className="cursor-pointer">
                 Language School
-              </Button>
+              </a>
             </div>
           </CardContent>
         </Card>
@@ -155,8 +155,8 @@ const InitiativeTable: React.FC<InitiativeTableProps> = ({
           <TableRow>
             <TableHead className="w-[30px] p-1 text-xs">#</TableHead>
             <TableHead className="p-1 text-xs">Name</TableHead>
-            <TableHead className="w-[60px] p-1 text-xs">Value</TableHead>
-            <TableHead className="w-[60px] p-1 text-xs">Complexity</TableHead>
+            <TableHead className="w-[50px] p-1 text-xs">Value</TableHead>
+            <TableHead className="w-[50px] p-1 text-xs">Complexity</TableHead>
             <TableHead className="w-[50px] p-1 text-xs">
               <Button variant="ghost" size="icon" onClick={clearInitiatives}>
                 <Trash className="h-4 w-4" />
@@ -178,7 +178,7 @@ const InitiativeTable: React.FC<InitiativeTableProps> = ({
           <TableRow>
             <TableCell colSpan={5} className="p-0">
               <Button variant="default" size="sm" className="w-full" onClick={handleAddRow}>
-                <Plus className="h-4 w-4 mr-2" />Add Initiative
+                Add Initiative
               </Button>
             </TableCell>
           </TableRow>
