@@ -90,7 +90,9 @@ export default function Home() {
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen py-2">
-      <h1 className="text-2xl font-bold mb-4">Value/Complexity Visualizer</h1>
+      <section className="w-full">
+        <h1 className="text-2xl font-bold mb-4">Initiative Prioritization Tool</h1>
+      </section>
       <div className="flex flex-col w-full">
         <Card className="w-full mb-4">
           <CardHeader>
@@ -113,12 +115,12 @@ export default function Home() {
               updateInitiative={updateInitiative}
             />
             <Separator className="my-4" />
-            <div className="flex flex-col items-start py-2">
+            <div className="flex flex-col items-start py-2 pl-4">
               <p className="text-sm">Samples:</p>
-              <Button variant="link" className="mr-2">
+              <Button variant="link" className="mb-1 p-0" onClick={loadOnlineRetailSample}>
                 Online Retail
               </Button>
-              <Button variant="link">
+              <Button variant="link" className="p-0" onClick={loadLanguageSchoolSample}>
                 Language School
               </Button>
             </div>
@@ -155,8 +157,8 @@ const InitiativeTable: React.FC<InitiativeTableProps> = ({
           <TableRow>
             <TableHead className="w-[30px] p-1 text-xs">#</TableHead>
             <TableHead className="p-1 text-xs">Name</TableHead>
-            <TableHead className="w-[50px] p-1 text-xs">Business Value</TableHead>
-            <TableHead className="w-[50px] p-1 text-xs">Complexity / TCO</TableHead>
+            <TableHead className="w-[80px] p-1 text-xs">Business Value</TableHead>
+            <TableHead className="w-[80px] p-1 text-xs">Complexity / TCO</TableHead>
             <TableHead className="w-[50px] p-1 text-xs">
               <Button variant="ghost" size="icon" onClick={clearInitiatives}>
                 <Trash className="h-4 w-4" />
@@ -176,7 +178,7 @@ const InitiativeTable: React.FC<InitiativeTableProps> = ({
             />
           ))}
           <TableRow>
-            <TableCell colSpan={5} className="p-0">
+            <TableCell colSpan={5} className="p-1">
               <Button variant="default" size="sm" className="w-full" onClick={handleAddRow}>
                 Add Initiative
               </Button>
@@ -233,10 +235,10 @@ const InitiativeTableRow: React.FC<InitiativeTableRowProps> = ({
         <Input className="text-xs" type="text" value={name} onChange={handleNameChange} />
       </TableCell>
       <TableCell className="p-1">
-        <Input className="text-xs" style={{width: "50px"}} type="number" value={value} onChange={handleValueChange} />
+        <Input className="text-xs" style={{width: "80px"}} type="number" value={value} onChange={handleValueChange} />
       </TableCell>
       <TableCell className="p-1">
-        <Input className="text-xs" style={{width: "50px"}} type="number" value={complexity} onChange={handleComplexityChange} />
+        <Input className="text-xs" style={{width: "80px"}} type="number" value={complexity} onChange={handleComplexityChange} />
       </TableCell>
       <TableCell className="p-1">
         <Button
