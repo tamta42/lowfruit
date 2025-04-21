@@ -26,7 +26,6 @@ interface Initiative {
 const initialInitiatives: Initiative[] = [
   {id: '1', name: 'Example 1', value: 7, complexity: 3},
   {id: '2', name: 'Example 2', value: 5, complexity: 5},
-  {id: '3', name: 'Example 3', value: 3, complexity: 7},
 ];
 
 const onlineRetailSample: Omit<Initiative, 'id'>[] = [
@@ -249,3 +248,4 @@ const InitiativeTableRow: React.FC<InitiativeTableRowProps> = ({
     </TableRow>
   );
 };
+
