@@ -13,7 +13,7 @@ import {
 } from '@/components/ui/table';
 import {Button} from '@/components/ui/button';
 import {Input} from '@/components/ui/input';
-import {Trash} from 'lucide-react';
+import {Trash, Plus} from 'lucide-react';
 import {Separator} from '@/components/ui/separator';
 
 interface Initiative {
@@ -156,7 +156,7 @@ const InitiativeTable: React.FC<InitiativeTableProps> = ({
             <TableHead className="w-[30px] p-1 text-xs">#</TableHead>
             <TableHead className="p-1 text-xs">Name</TableHead>
             <TableHead className="w-[50px] p-1 text-xs">Business Value</TableHead>
-            <TableHead className="w-[50px] p-1 text-xs">Complexity</TableHead>
+            <TableHead className="w-[50px] p-1 text-xs">Complexity / TCO</TableHead>
             <TableHead className="w-[50px] p-1 text-xs">
               <Button variant="ghost" size="icon" onClick={clearInitiatives}>
                 <Trash className="h-4 w-4" />
@@ -251,5 +251,3 @@ const InitiativeTableRow: React.FC<InitiativeTableRowProps> = ({
     </TableRow>
   );
 };
-
-
