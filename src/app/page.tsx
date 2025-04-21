@@ -2,7 +2,7 @@
 
 import QuadrantVisualization from '@/components/QuadrantVisualization';
 import {Card, CardContent, CardHeader, CardTitle} from '@/components/ui/card';
-import {useState} from 'react';
+import {useState, useCallback} from 'react';
 import {
   Table,
   TableBody,
@@ -76,17 +76,17 @@ export default function Home() {
     );
   };
 
-  const loadOnlineRetailSample = () => {
+  const loadOnlineRetailSample = useCallback(() => {
     setInitiatives(
       onlineRetailSample.map(item => ({...item, id: crypto.randomUUID()}))
     );
-  };
+  }, []);
 
-  const loadLanguageSchoolSample = () => {
+  const loadLanguageSchoolSample = useCallback(() => {
     setInitiatives(
       languageSchoolSample.map(item => ({...item, id: crypto.randomUUID()}))
     );
-  };
+  }, []);
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen py-2">
@@ -155,8 +155,8 @@ const InitiativeTable: React.FC<InitiativeTableProps> = ({
           <TableRow>
             <TableHead className="w-[30px] p-1 text-xs">#</TableHead>
             <TableHead className="p-1 text-xs">Name</TableHead>
-            <TableHead className="w-[50px] p-1 text-xs">Value</TableHead>
-            <TableHead className="w-[50px] p-1 text-xs">Complexity</TableHead>
+            <TableHead className="w-[60px] p-1 text-xs">Value</TableHead>
+            <TableHead className="w-[60px] p-1 text-xs">Complexity</TableHead>
             <TableHead className="w-[50px] p-1 text-xs">
               <Button variant="ghost" size="icon" onClick={clearInitiatives}>
                 <Trash className="h-4 w-4" />
@@ -233,10 +233,10 @@ const InitiativeTableRow: React.FC<InitiativeTableRowProps> = ({
         <Input className="text-xs" type="text" value={name} onChange={handleNameChange} />
       </TableCell>
       <TableCell className="p-1">
-        <Input className="text-xs" type="number" value={value} onChange={handleValueChange} />
+        <Input className="text-xs" style={{width: "50px"}} type="number" value={value} onChange={handleValueChange} />
       </TableCell>
       <TableCell className="p-1">
-        <Input className="text-xs" type="number" value={complexity} onChange={handleComplexityChange} />
+        <Input className="text-xs" style={{width: "50px"}} type="number" value={complexity} onChange={handleComplexityChange} />
       </TableCell>
       <TableCell className="p-1">
         <Button
