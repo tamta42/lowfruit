@@ -102,7 +102,7 @@ export default function Home() {
         </Card>
         <Card className="w-full">
           <CardHeader>
-            <CardTitle>Initiative Input</CardTitle>
+            <CardTitle>Initiatives</CardTitle>
           </CardHeader>
           <CardContent className="p-0">
             <InitiativeTable
@@ -251,3 +251,4 @@ const InitiativeTableRow: React.FC<InitiativeTableRowProps> = ({
     </TableRow>
   );
 };
+
