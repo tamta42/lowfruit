@@ -14,6 +14,7 @@ import {Button} from '@/components/ui/button';
 import {Input} from '@/components/ui/input';
 import {Trash, Plus} from 'lucide-react';
 import {Separator} from '@/components/ui/separator';
+import QuadrantVisualization from '@/components/QuadrantVisualization';
 
 interface Initiative {
   id: string;
@@ -89,34 +90,40 @@ export default function Home() {
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen py-2">
-      <section className="w-full">
-        <h1 className="text-2xl font-bold mb-4">Initiative Prioritization Tool</h1>
-      </section>
-      <div className="flex flex-col w-full">
-        <Card className="w-full">
-          <CardHeader>
-            <CardTitle>Initiatives</CardTitle>
-          </CardHeader>
-          <CardContent className="p-0">
-            <InitiativeTable
-              initiatives={initiatives}
-              addInitiative={addInitiative}
-              clearInitiatives={clearInitiatives}
-              deleteInitiative={deleteInitiative}
-              updateInitiative={updateInitiative}
-            />
-            <Separator className="my-4" />
-            <div className="flex flex-col items-start py-2 pl-4">
-              <p className="text-sm">Samples:</p>
-              <Button variant="link" className="mb-1 p-0" onClick={loadOnlineRetailSample}>
-                Online Retail
-              </Button>
-              <Button variant="link" className="p-0" onClick={loadLanguageSchoolSample}>
-                Language School
-              </Button>
-            </div>
-          </CardContent>
-        </Card>
+      {/* Main Content Container with Margins */}
+      <div className="w-full md:w-4/5 lg:w-4/5 px-4 md:px-8 lg:px-16">
+        <section className="w-full">
+          <h1 className="text-2xl font-bold mb-4">Initiative Prioritization Tool</h1>
+        </section>
+
+        <QuadrantVisualization initiatives={initiatives} />
+
+        <div className="flex flex-col w-full">
+          <Card className="w-full">
+            <CardHeader>
+              <CardTitle>Initiatives</CardTitle>
+            </CardHeader>
+            <CardContent className="p-0">
+              <InitiativeTable
+                initiatives={initiatives}
+                addInitiative={addInitiative}
+                clearInitiatives={clearInitiatives}
+                deleteInitiative={deleteInitiative}
+                updateInitiative={updateInitiative}
+              />
+              <Separator className="my-4" />
+              <div className="flex flex-col items-start py-2 pl-4">
+                <p className="text-sm">Samples:</p>
+                <Button variant="link" className="mb-1 p-0" onClick={loadOnlineRetailSample}>
+                  Online Retail
+                </Button>
+                <Button variant="link" className="p-0" onClick={loadLanguageSchoolSample}>
+                  Language School
+                </Button>
+              </div>
+            </CardContent>
+          </Card>
+        </div>
       </div>
     </div>
   );
@@ -244,4 +251,3 @@ const InitiativeTableRow: React.FC<InitiativeTableRowProps> = ({
     </TableRow>
   );
 };
-
