@@ -1,6 +1,5 @@
 'use client';
 
-import QuadrantVisualization from '@/components/QuadrantVisualization';
 import {Card, CardContent, CardHeader, CardTitle} from '@/components/ui/card';
 import {useState, useCallback} from 'react';
 import {
@@ -94,14 +93,6 @@ export default function Home() {
         <h1 className="text-2xl font-bold mb-4">Initiative Prioritization Tool</h1>
       </section>
       <div className="flex flex-col w-full">
-        <Card className="w-full mb-4">
-          <CardHeader>
-            <CardTitle>Priority Quadrant</CardTitle>
-          </CardHeader>
-          <CardContent className="w-full h-full">
-            <QuadrantVisualization initiatives={initiatives} />
-          </CardContent>
-        </Card>
         <Card className="w-full">
           <CardHeader>
             <CardTitle>Initiatives</CardTitle>
@@ -253,3 +244,4 @@ const InitiativeTableRow: React.FC<InitiativeTableRowProps> = ({
     </TableRow>
   );
 };
+
