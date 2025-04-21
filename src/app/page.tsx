@@ -15,6 +15,12 @@ import {Input} from '@/components/ui/input';
 import {Trash, Plus} from 'lucide-react';
 import {Separator} from '@/components/ui/separator';
 import QuadrantVisualization from '@/components/QuadrantVisualization';
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "@/components/ui/tooltip"
 
 interface Initiative {
   id: string;
@@ -88,14 +94,16 @@ export default function Home() {
   }, []);
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen py-2 px-10">
-      {/* Main Content Container with Margins */}
-      <section className="w-full">
-        <h1 className="text-2xl font-bold mb-4">Initiative Prioritization Tool</h1>
+    <div className="w-screen flex flex-col items-center py-2 px-[10%]">
+      {/* Header Section */}
+      <section className="w-full py-4">
+        <h1 className="text-2xl font-bold text-center">Initiative Prioritization Tool</h1>
       </section>
 
+      {/* Quadrant Visualization */}
       <QuadrantVisualization initiatives={initiatives} />
 
+      {/* Initiative Input and Table */}
       <div className="flex flex-col w-full mt-4">
         <Card className="w-full">
           <CardHeader>
@@ -152,7 +160,16 @@ const InitiativeTable: React.FC<InitiativeTableProps> = ({
           <TableRow>
             <TableHead className="w-[30px] p-1 text-xs">#</TableHead>
             <TableHead className="p-1 text-xs">Name</TableHead>
-            <TableHead className="w-[80px] p-1 text-xs">Business Value</TableHead>
+            <TableHead className="w-[80px] p-1 text-xs">
+              <TooltipProvider>
+                <Tooltip>
+                  <TooltipTrigger>Business Value</TooltipTrigger>
+                  <TooltipContent>
+                    A numeric representation of the benefit to the business.
+                  </TooltipContent>
+                </Tooltip>
+              </TooltipProvider>
+            </TableHead>
             <TableHead className="w-[80px] p-1 text-xs">Complexity / TCO</TableHead>
             <TableHead className="w-[50px] p-1 text-xs">
               <Button variant="ghost" size="icon" onClick={clearInitiatives}>
