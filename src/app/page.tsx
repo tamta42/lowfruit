@@ -89,41 +89,38 @@ export default function Home() {
   }, []);
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen py-2">
+    <div className="flex flex-col items-center justify-center min-h-screen py-2 px-10">
       {/* Main Content Container with Margins */}
-      <div className="w-full md:w-4/5 lg:w-4/5 px-4 md:px-8 lg:px-16">
-        <section className="w-full">
-          <h1 className="text-2xl font-bold mb-4">Initiative Prioritization Tool</h1>
-        </section>
+      <section className="w-full">
+        <h1 className="text-2xl font-bold mb-4">Initiative Prioritization Tool</h1>
+      </section>
+      <QuadrantVisualization initiatives={initiatives} />
 
-        <QuadrantVisualization initiatives={initiatives} />
-
-        <div className="flex flex-col w-full">
-          <Card className="w-full">
-            <CardHeader>
-              <CardTitle>Initiatives</CardTitle>
-            </CardHeader>
-            <CardContent className="p-0">
-              <InitiativeTable
-                initiatives={initiatives}
-                addInitiative={addInitiative}
-                clearInitiatives={clearInitiatives}
-                deleteInitiative={deleteInitiative}
-                updateInitiative={updateInitiative}
-              />
-              <Separator className="my-4" />
-              <div className="flex flex-col items-start py-2 pl-4">
-                <p className="text-sm">Samples:</p>
-                <Button variant="link" className="mb-1 p-0" onClick={loadOnlineRetailSample}>
-                  Online Retail
-                </Button>
-                <Button variant="link" className="p-0" onClick={loadLanguageSchoolSample}>
-                  Language School
-                </Button>
-              </div>
-            </CardContent>
-          </Card>
-        </div>
+      <div className="flex flex-col w-full mt-4">
+        <Card className="w-full">
+          <CardHeader>
+            <CardTitle>Initiatives</CardTitle>
+          </CardHeader>
+          <CardContent className="p-0">
+            <InitiativeTable
+              initiatives={initiatives}
+              addInitiative={addInitiative}
+              clearInitiatives={clearInitiatives}
+              deleteInitiative={deleteInitiative}
+              updateInitiative={updateInitiative}
+            />
+            <Separator className="my-4" />
+            <div className="flex flex-col items-start py-2 pl-4">
+              <p className="text-sm">Samples:</p>
+              <Button variant="link" className="p-0" onClick={loadOnlineRetailSample}>
+                Online Retail
+              </Button>
+              <Button variant="link" className="p-0" onClick={loadLanguageSchoolSample}>
+                Language School
+              </Button>
+            </div>
+          </CardContent>
+        </Card>
       </div>
     </div>
   );
@@ -226,11 +223,12 @@ const InitiativeTableRow: React.FC<InitiativeTableRowProps> = ({
     }
   };
 
+  let namePlaceholder = `enter name for initiative #${index+1}`;
   return (
     <TableRow>
       <TableCell className="font-medium p-1 text-xs">{index + 1}</TableCell>
       <TableCell className="p-1">
-        <Input className="text-xs" type="text" value={name} onChange={handleNameChange} />
+        <Input className="text-xs" placeholder={namePlaceholder} type="text" value={name} onChange={handleNameChange} />
       </TableCell>
       <TableCell className="p-1">
         <Input className="text-xs" style={{width: "80px"}} type="number" value={value} onChange={handleValueChange} />
