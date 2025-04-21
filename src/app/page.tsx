@@ -91,8 +91,16 @@ export default function Home() {
   return (
     <div className="flex flex-col items-center justify-center min-h-screen py-2">
       <h1 className="text-2xl font-bold mb-4">Value/Complexity Visualizer</h1>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 w-full max-w-4xl">
-        <Card className="col-span-1 md:w-1/2">
+      <div className="flex flex-col w-full max-w-4xl">
+        <Card className="w-full mb-4">
+          <CardHeader>
+            <CardTitle>Priority Quadrant</CardTitle>
+          </CardHeader>
+          <CardContent className="w-full h-full">
+            <QuadrantVisualization initiatives={initiatives} />
+          </CardContent>
+        </Card>
+        <Card className="w-full">
           <CardHeader>
             <CardTitle>Initiative Input</CardTitle>
           </CardHeader>
@@ -114,14 +122,6 @@ export default function Home() {
                 Language School
               </Button>
             </div>
-          </CardContent>
-        </Card>
-        <Card className="col-span-1 md:w-1/2">
-          <CardHeader>
-            <CardTitle>Priority Quadrant</CardTitle>
-          </CardHeader>
-          <CardContent className="w-full h-full">
-            <QuadrantVisualization initiatives={initiatives} />
           </CardContent>
         </Card>
       </div>
@@ -178,7 +178,7 @@ const InitiativeTable: React.FC<InitiativeTableProps> = ({
           <TableRow>
             <TableCell colSpan={5} className="p-0">
               <Button variant="default" size="sm" className="w-full" onClick={handleAddRow}>
-                <Plus className="h-4 w-4 mr-2" />
+                <Plus className="h-4 w-4 mr-2" />Add Initiative
               </Button>
             </TableCell>
           </TableRow>
@@ -251,5 +251,3 @@ const InitiativeTableRow: React.FC<InitiativeTableRowProps> = ({
     </TableRow>
   );
 };
-
-
