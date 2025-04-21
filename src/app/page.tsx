@@ -170,7 +170,16 @@ const InitiativeTable: React.FC<InitiativeTableProps> = ({
                 </Tooltip>
               </TooltipProvider>
             </TableHead>
-            <TableHead className="w-[80px] p-1 text-xs">Complexity / TCO</TableHead>
+            <TableHead className="w-[80px] p-1 text-xs">
+              <TooltipProvider>
+                <Tooltip>
+                  <TooltipTrigger>Complexity / TCO</TooltipTrigger>
+                  <TooltipContent>
+                    A numeric representation of the effort to implement or total cost of ownership.
+                  </TooltipContent>
+                </Tooltip>
+              </TooltipProvider>
+            </TableHead>
             <TableHead className="w-[50px] p-1 text-xs">
               <Button variant="ghost" size="icon" onClick={clearInitiatives}>
                 <Trash className="h-4 w-4" />
@@ -266,5 +275,6 @@ const InitiativeTableRow: React.FC<InitiativeTableRowProps> = ({
     </TableRow>
   );
 };
+
 
 
