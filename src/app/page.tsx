@@ -91,7 +91,7 @@ export default function Home() {
   return (
     <div className="flex flex-col items-center justify-center min-h-screen py-2">
       <h1 className="text-2xl font-bold mb-4">Value/Complexity Visualizer</h1>
-      <div className="flex flex-col w-full max-w-4xl">
+      <div className="flex flex-col w-full">
         <Card className="w-full mb-4">
           <CardHeader>
             <CardTitle>Priority Quadrant</CardTitle>
@@ -115,12 +115,12 @@ export default function Home() {
             <Separator className="my-4" />
             <div className="flex flex-col justify-center items-center py-2">
               <p className="text-sm mr-2">Samples:</p>
-              <a onClick={loadOnlineRetailSample} className="mr-2 cursor-pointer">
+              <Button variant="link" onClick={loadOnlineRetailSample} className="mr-2">
                 Online Retail
-              </a>
-              <a onClick={loadLanguageSchoolSample} className="cursor-pointer">
+              </Button>
+              <Button variant="link" onClick={loadLanguageSchoolSample} className="cursor-pointer">
                 Language School
-              </a>
+              </Button>
             </div>
           </CardContent>
         </Card>
@@ -155,7 +155,7 @@ const InitiativeTable: React.FC<InitiativeTableProps> = ({
           <TableRow>
             <TableHead className="w-[30px] p-1 text-xs">#</TableHead>
             <TableHead className="p-1 text-xs">Name</TableHead>
-            <TableHead className="w-[50px] p-1 text-xs">Value</TableHead>
+            <TableHead className="w-[50px] p-1 text-xs">Business Value</TableHead>
             <TableHead className="w-[50px] p-1 text-xs">Complexity</TableHead>
             <TableHead className="w-[50px] p-1 text-xs">
               <Button variant="ghost" size="icon" onClick={clearInitiatives}>
@@ -251,4 +251,5 @@ const InitiativeTableRow: React.FC<InitiativeTableRowProps> = ({
     </TableRow>
   );
 };
+
 
