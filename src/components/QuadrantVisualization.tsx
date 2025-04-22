@@ -1,7 +1,18 @@
 "use client";
 
 import { useState } from "react";
-import { ScatterChart, Scatter, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Label } from "recharts";
+import {
+  ScatterChart,
+  Scatter,
+  XAxis,
+  YAxis,
+  CartesianGrid,
+  Tooltip,
+  ResponsiveContainer,
+  Label,
+  ReferenceLine,
+  Text,
+} from "recharts";
 
 interface Initiative {
   name: string;
@@ -33,7 +44,9 @@ interface QuadrantVisualizationProps {
   initiatives: Initiative[];
 }
 
-const QuadrantVisualization: React.FC<QuadrantVisualizationProps> = ({ initiatives }) => {
+const QuadrantVisualization: React.FC<QuadrantVisualizationProps> = ({
+  initiatives,
+}) => {
   const [tooltipContent, setTooltipContent] = useState<Initiative | null>(null);
 
   const handleMouseEnter = (initiative: Initiative) => {
@@ -61,16 +74,15 @@ const QuadrantVisualization: React.FC<QuadrantVisualizationProps> = ({ initiativ
           name="Complexity"
           domain={[0, 10]}
           tickCount={11}
-          label={{ value: 'Complexity', position: 'bottom', offset: 0 }}
-        >
-        </XAxis>
+          label={{ value: "Complexity", position: "bottom", offset: 0 }}
+        />
         <YAxis
           type="number"
           dataKey="value"
           name="Value"
           domain={[0, 10]}
           tickCount={11}
-          label={{ value: 'Value', angle: -90, position: 'left', offset: 0 }}
+          label={{ value: "Value", angle: -90, position: "left", offset: 0 }}
         />
         <Tooltip content={<CustomTooltip />} />
         <Scatter
@@ -80,6 +92,52 @@ const QuadrantVisualization: React.FC<QuadrantVisualizationProps> = ({ initiativ
           onMouseEnter={handleMouseEnter}
           onMouseLeave={handleMouseLeave}
         />
+
+        {/* Quadrant Dividers */}
+        <ReferenceLine x={5} stroke="#ccc" strokeDasharray="3 3" />
+        <ReferenceLine y={5} stroke="#ccc" strokeDasharray="3 3" />
+
+        {/* Quadrant Labels */}
+        <Text
+          x={2.5}
+          y={7.5}
+          textAnchor="middle"
+          verticalAnchor="middle"
+          fontSize={16}
+          fill="#8884d8"
+        >
+          High Value, Low Complexity
+        </Text>
+        <Text
+          x={7.5}
+          y={7.5}
+          textAnchor="middle"
+          verticalAnchor="middle"
+          fontSize={16}
+          fill="#8884d8"
+        >
+          High Value, High Complexity
+        </Text>
+        <Text
+          x={2.5}
+          y={2.5}
+          textAnchor="middle"
+          verticalAnchor="middle"
+          fontSize={16}
+          fill="#8884d8"
+        >
+          Low Value, Low Complexity
+        </Text>
+        <Text
+          x={7.5}
+          y={2.5}
+          textAnchor="middle"
+          verticalAnchor="middle"
+          fontSize={16}
+          fill="#8884d8"
+        >
+          Low Value, High Complexity
+        </Text>
       </ScatterChart>
     </ResponsiveContainer>
   );
