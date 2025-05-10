@@ -1,5 +1,7 @@
-'use client';
 
+"use client";
+
+import QuadrantVisualization from "@/components/QuadrantVisualization";
 import {Card, CardContent, CardHeader, CardTitle} from '@/components/ui/card';
 import {useState, useCallback} from 'react';
 import {
@@ -14,7 +16,6 @@ import {Button} from '@/components/ui/button';
 import {Input} from '@/components/ui/input';
 import {Trash, Plus} from 'lucide-react';
 import {Separator} from '@/components/ui/separator';
-import QuadrantVisualization from '@/components/QuadrantVisualization';
 import {
   Tooltip,
   TooltipContent,
@@ -97,7 +98,7 @@ export default function Home() {
     <div className="w-screen flex flex-col items-center py-2 px-[10%]">
       {/* Header Section */}
       <section className="w-full py-4">
-        <h1 className="text-2xl font-bold text-center">Initiative Prioritization Tool</h1>
+        <h1 className="text-2xl font-bold text-center">Initiative Prioritisation Tool</h1>
       </section>
 
       {/* Quadrant Visualization */}
@@ -165,7 +166,7 @@ const InitiativeTable: React.FC<InitiativeTableProps> = ({
                 <Tooltip>
                   <TooltipTrigger>Business Value</TooltipTrigger>
                   <TooltipContent>
-                    A numeric representation of the benefit to the business.
+                    <p>A numeric representation of the benefit to the business.</p>
                   </TooltipContent>
                 </Tooltip>
               </TooltipProvider>
@@ -175,7 +176,7 @@ const InitiativeTable: React.FC<InitiativeTableProps> = ({
                 <Tooltip>
                   <TooltipTrigger>Complexity / TCO</TooltipTrigger>
                   <TooltipContent>
-                    A numeric representation of the effort to implement or total cost of ownership.
+                    <p>A numeric representation of the effort to implement or total cost of ownership.</p>
                   </TooltipContent>
                 </Tooltip>
               </TooltipProvider>
@@ -201,6 +202,7 @@ const InitiativeTable: React.FC<InitiativeTableProps> = ({
           <TableRow>
             <TableCell colSpan={5} className="p-1">
               <Button variant="default" size="sm" className="w-full" onClick={handleAddRow}>
+                <Plus className="h-4 w-4 mr-2" />
                 Add Initiative
               </Button>
             </TableCell>
@@ -238,6 +240,10 @@ const InitiativeTableRow: React.FC<InitiativeTableRowProps> = ({
     if (!isNaN(newValue) && newValue >= 1 && newValue <= 9) {
       setValue(e.target.value);
       updateInitiative(initiative.id, {value: newValue});
+    } else if (e.target.value === "") {
+        setValue("");
+        // Optionally, update with a default or null value
+        // updateInitiative(initiative.id, { value: 1 }); 
     }
   };
 
@@ -246,6 +252,10 @@ const InitiativeTableRow: React.FC<InitiativeTableRowProps> = ({
     if (!isNaN(newComplexity) && newComplexity >= 1 && newComplexity <= 9) {
       setComplexity(e.target.value);
       updateInitiative(initiative.id, {complexity: newComplexity});
+    } else if (e.target.value === "") {
+        setComplexity("");
+        // Optionally, update with a default or null value
+        // updateInitiative(initiative.id, { complexity: 1 });
     }
   };
 
@@ -257,10 +267,10 @@ const InitiativeTableRow: React.FC<InitiativeTableRowProps> = ({
         <Input className="text-xs" placeholder={namePlaceholder} type="text" value={name} onChange={handleNameChange} />
       </TableCell>
       <TableCell className="p-1">
-        <Input className="text-xs" style={{width: "80px"}} type="number" value={value} onChange={handleValueChange} />
+        <Input className="text-xs w-[80px]" type="number" value={value} onChange={handleValueChange} min="1" max="9" />
       </TableCell>
       <TableCell className="p-1">
-        <Input className="text-xs" style={{width: "80px"}} type="number" value={complexity} onChange={handleComplexityChange} />
+        <Input className="text-xs w-[80px]" type="number" value={complexity} onChange={handleComplexityChange} min="1" max="9" />
       </TableCell>
       <TableCell className="p-1">
         <Button
@@ -275,6 +285,3 @@ const InitiativeTableRow: React.FC<InitiativeTableRowProps> = ({
     </TableRow>
   );
 };
-
-
-
